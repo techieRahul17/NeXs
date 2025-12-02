@@ -2,7 +2,7 @@
 
 ![NEXUS Banner](https://placehold.co/1200x400/050505/FF2E2E?text=NEXUS+AGENCY)
 
-> **"WE DON'T JUST CODE. WE IGNITE STARTUPS."**
+> **Design.Build.Deliver**
 
 Welcome to **NEXUS**! This is a high-energy, neo-brutalist agency website template designed to turn heads and convert visitors. Built with modern web technologies, it's fast, responsive, and packed with "funky" animations.
 
