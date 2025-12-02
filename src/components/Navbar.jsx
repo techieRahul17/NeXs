@@ -1,45 +1,45 @@
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-scroll'; 
-// Actually, I didn't install react-scroll. I'll use standard <a href="#id"> and CSS scroll-behavior: smooth.
-// But wait, user asked for react-router-dom. 
-// If I use react-router-dom, I can use HashLink or just standard anchors if it's all on one page.
-// I'll use standard anchors for now.
+import Logo from './Logo';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            setScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
-            <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#" className="text-2xl font-bold font-heading tracking-tighter hover:text-primary transition-colors">
-                    NEXUS
+        <nav className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] z-50 transition-all duration-300 rounded-full ${scrolled ? 'bg-black/90 border border-primary/30 backdrop-blur-md py-3 px-6 shadow-[0_0_20px_rgba(255,46,46,0.2)]' : 'bg-transparent py-6'}`}>
+            <div className="flex justify-between items-center">
+                <a href="#" className="flex items-center gap-2 group">
+                    <Logo className="w-8 h-8 group-hover:rotate-180 transition-transform duration-500" />
+                    <span className="text-2xl font-bold font-heading tracking-tighter text-white group-hover:text-primary transition-colors">
+                        NEXUS
+                    </span>
                 </a>
 
-                <div className="hidden md:flex space-x-8 items-center">
+                <div className="hidden md:flex space-x-8 items-center bg-black/40 px-8 py-2 rounded-full border border-primary/10 backdrop-blur-sm">
                     {['Work', 'Services', 'Process'].map((item) => (
                         <a
                             key={item}
                             href={`#${item.toLowerCase()}`}
-                            className="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
+                            className="text-sm font-medium text-gray-300 hover:text-primary transition-all uppercase tracking-widest relative group"
                         >
                             {item}
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                         </a>
                     ))}
                 </div>
 
                 <a
                     href="#contact"
-                    className="bg-primary text-black px-6 py-2 font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                    className="bg-primary text-black px-6 py-2 rounded-full font-bold uppercase tracking-wider hover:bg-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,46,46,0.6)] text-sm"
                 >
-                    Start a Project
+                    Let's Talk
                 </a>
             </div>
         </nav>

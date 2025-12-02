@@ -1,40 +1,74 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState } from 'react';
+
+const ProcessStep = ({ number, title, description, isHovered, onHover, onLeave }) => (
+    <div
+        className="relative w-full md:w-64 h-80 perspective-1000 group cursor-pointer"
+        onMouseEnter={onHover}
+        onMouseLeave={onLeave}
+    >
+        <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
+            {/* Front */}
+            <div className="absolute inset-0 backface-hidden bg-black border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center hover:border-primary/50 transition-colors">
+                <div className={`text-6xl font-bold font-heading mb-4 transition-colors duration-300 ${isHovered ? 'text-primary' : 'text-white/20'}`}>
+                    0{number}
+                </div>
+                <h3 className="text-2xl font-bold text-white uppercase tracking-widest">
+                    {title}
+                </h3>
+            </div>
+
+            {/* Back */}
+            <div className="absolute inset-0 backface-hidden rotate-y-180 bg-primary rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+                <h3 className="text-xl font-bold text-black uppercase tracking-widest mb-4">
+                    {title}
+                </h3>
+                <p className="text-black font-medium leading-relaxed">
+                    {description}
+                </p>
+            </div>
+        </div>
+    </div>
+);
 
 const Process = () => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start center", "end center"]
-    });
+    const [hoveredIndex, setHoveredIndex] = useState(-1);
 
-    const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+    const steps = [
+        { title: 'Discovery', description: 'We dive deep into your business goals and user needs.' },
+        { title: 'Wireframe', description: 'Blueprinting the structure and flow of your application.' },
+        { title: 'Code', description: 'Crafting clean, scalable, and high-performance code.' },
+        { title: 'Launch', description: 'Deploying your product to the world with zero downtime.' },
+    ];
 
     return (
-        <section id="process" ref={ref} className="py-32 bg-dark relative overflow-hidden">
+        <section id="process" className="py-32 bg-dark relative overflow-hidden">
             <div className="container mx-auto px-6">
-                <h2 className="text-4xl md:text-6xl font-bold font-heading mb-20 text-center">
+                <h2 className="text-4xl md:text-7xl font-bold font-heading mb-20 text-center">
                     THE <span className="text-primary">BLUEPRINT</span>
                 </h2>
 
                 <div className="relative flex flex-col md:flex-row justify-between items-center gap-12 md:gap-0">
                     {/* Background Line */}
                     <div className="absolute top-1/2 left-0 w-full h-1 bg-white/10 hidden md:block -translate-y-1/2"></div>
-                    {/* Animated Line */}
-                    <motion.div
-                        style={{ scaleX, transformOrigin: "left" }}
-                        className="absolute top-1/2 left-0 w-full h-1 bg-primary hidden md:block -translate-y-1/2"
-                    ></motion.div>
 
-                    {['Discovery', 'Wireframe', 'Code', 'Launch'].map((step, index) => (
-                        <div key={step} className="relative z-10 bg-dark p-6 border border-white/10 hover:border-primary transition-colors duration-300 w-full md:w-64 text-center group">
-                            <div className="text-4xl font-bold font-heading text-white/20 mb-2 group-hover:text-primary transition-colors">
-                                0{index + 1}
-                            </div>
-                            <h3 className="text-xl font-bold text-white uppercase tracking-widest">
-                                {step}
-                            </h3>
-                        </div>
+                    {/* Dynamic Red Line */}
+                    <div
+                        className="absolute top-1/2 left-0 h-1 bg-primary hidden md:block -translate-y-1/2 transition-all duration-500 ease-out shadow-[0_0_15px_#FF2E2E]"
+                        style={{
+                            width: hoveredIndex !== -1 ? `${(hoveredIndex / (steps.length - 1)) * 100}%` : '0%'
+                        }}
+                    ></div>
+
+                    {steps.map((step, index) => (
+                        <ProcessStep
+                            key={step.title}
+                            number={index + 1}
+                            title={step.title}
+                            description={step.description}
+                            isHovered={hoveredIndex >= index}
+                            onHover={() => setHoveredIndex(index)}
+                            onLeave={() => setHoveredIndex(-1)}
+                        />
                     ))}
                 </div>
             </div>
