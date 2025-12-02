@@ -82,4 +82,10 @@ All text content is directly editable within the component files located in `src
 
 ## License
 
-This project is open source and available under the MIT License.
+This project is under the MIT License.
+
+## Authors
+Team NeXus
+Rahul V S - [Github](https://github.com/techieRahul17)
+Adhithya R - [Github](https://github.com/Adhi-1004)
+Sharvesh Ram K S - [Github](https://github.com/Sharu1425)
