@@ -86,6 +86,12 @@ This project is under the MIT License.
 
 ## Authors
 Team NeXus
+<<<<<<< HEAD
 Rahul V S - [Github](https://github.com/techieRahul17)
 Adhithya R - [Github](https://github.com/Adhi-1004)
 Sharvesh Ram K S - [Github](https://github.com/Sharu1425)
+=======
+* **Rahul V S** - [![Visit Repo](https://img.shields.io/badge/GitHub-Repo-black?logo=github)](https://github.com/techieRahul17)
+* **Adhithya R** - [![Visit Repo](https://img.shields.io/badge/GitHub-Repo-black?logo=github)](https://github.com/Adhi-1004)
+* **Sharvesh Ram K S** - [![Visit Repo](https://img.shields.io/badge/GitHub-Repo-black?logo=github)](https://github.com/Sharu1425)
+>>>>>>> f6c61635cc25a3085b5ba061ac8770c2b6e36004
