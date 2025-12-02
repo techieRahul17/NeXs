@@ -85,7 +85,7 @@ All text content is directly editable within the component files located in `src
 This project is under the MIT License.
 
 ## Authors
-Team NeXus
+Team NeXus - [![Visit Repo](https://img.shields.io/badge/GitHub-Repo-black?logo=github)](https://github.com/techieRahul17/NeXs)
 Rahul V S - [Github](https://github.com/techieRahul17)
 Adhithya R - [Github](https://github.com/Adhi-1004)
 Sharvesh Ram K S - [Github](https://github.com/Sharu1425)
