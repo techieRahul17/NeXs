@@ -42,14 +42,14 @@ const Portfolio = () => {
                         image="https://placehold.co/600x800/111/FF2E2E?text=FinTech+Dashboard"
                     />
                     <ProjectCard
-                        title="E-Commerce App"
-                        category="Mobile"
-                        image="https://placehold.co/600x800/111/4F46E5?text=E-Commerce"
+                        title="Health Tech"
+                        category="Web App"
+                        image="https://placehold.co/600x800/111/4F46E5?text=Health+Tech"
                     />
                     <ProjectCard
-                        title="AI SaaS Platform"
-                        category="SaaS"
-                        image="https://placehold.co/600x800/111/EC4899?text=AI+Platform"
+                        title="Education"
+                        category="Web App"
+                        image="https://placehold.co/600x800/111/EC4899?text=Education"
                     />
                 </div>
             </div>

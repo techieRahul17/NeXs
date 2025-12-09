@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import ForClients from './pages/ForClients';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HypeStrip from './components/HypeStrip';
@@ -9,20 +10,36 @@ import WhyUs from './components/WhyUs';
 import Process from './components/Process';
 import Footer from './components/Footer';
 
+import { AuthProvider } from './context/AuthContext';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ClientDashboard from './pages/ClientDashboard';
+
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen bg-dark text-white selection:bg-primary selection:text-black font-sans">
-        <Navbar />
-        <Hero />
-        <HypeStrip />
-        <Services />
-        <Portfolio />
-        <WhyUs />
-        <Process />
-        <Footer />
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="min-h-screen bg-dark text-white selection:bg-primary selection:text-black font-sans">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <HypeStrip />
+                <Services />
+                <Portfolio />
+                <WhyUs />
+                <Process />
+              </>
+            } />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<ClientDashboard />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 
