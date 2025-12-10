@@ -14,6 +14,7 @@ import { AuthProvider } from './context/AuthContext';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ClientDashboard from './pages/ClientDashboard';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -34,7 +35,11 @@ function App() {
             } />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/dashboard" element={<ClientDashboard />} />
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <ClientDashboard />
+              </ProtectedRoute>
+            } />
           </Routes>
           <Footer />
         </div>

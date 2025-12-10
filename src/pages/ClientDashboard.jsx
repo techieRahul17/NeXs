@@ -31,28 +31,39 @@ const ClientDashboard = () => {
 
         // ----------------------------------------------------------------------
         // 📧 EMAILJS CONFIGURATION
-        // Please replace the placeholders below with your actual EmailJS keys.
-        // Sign up at https://www.emailjs.com/ to get these.
+        // Keys are loaded from user's .env file (VITE_EMAILJS_SERVICE_ID, etc.)
         // ----------------------------------------------------------------------
-        const SERVICE_ID = "YOUR_SERVICE_ID";   // e.g. "service_x9s2k3"
-        const TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // e.g. "template_8d7f3h"
-        const PUBLIC_KEY = "YOUR_PUBLIC_KEY";   // e.g. "user_K2s8S9d2"
+        const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
         // ----------------------------------------------------------------------
 
-        if (SERVICE_ID === "YOUR_SERVICE_ID") {
-            alert("⚠️ Please configure your EmailJS keys in ClientDashboard.jsx to send emails.");
+        if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+            alert("⚠️ EmailJS is not configured.\nPlease add VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY to your .env file.");
+            console.error("Missing EmailJS keys in .env file");
             return;
         }
 
         const templateParams = {
+            to_email: user?.email,      // Sends to the logged-in user (or use a specific admin email)
+            from_name: user?.name || "Unknown User",
+            reply_to: user?.email || "No Email",
+            message: projectData.description,
+
+            // Project Details
             title: projectData.title,
             type: projectData.type,
             budget: projectData.budget,
             timeline: projectData.timeline,
-            description: projectData.description,
-            user_name: user?.name || "Unknown User",
-            user_email: user?.email || "No Email"
         };
+
+        console.log("DEBUG: Current User:", user);
+        console.log("DEBUG: Sending Email Params:", templateParams);
+
+        if (!templateParams.to_email) {
+            alert("Error: User email is missing. Please log out and log in again.");
+            return;
+        }
 
         setSubmitted(false);
 
@@ -85,7 +96,8 @@ const ClientDashboard = () => {
                 setTimeout(() => setSubmitted(false), 5000);
             }, (err) => {
                 console.log('FAILED...', err);
-                alert("Failed to send email. Please check your internet connection or API keys.");
+                // Detailed error for debugging
+                alert(`Failed to send email. Error: ${err.text || JSON.stringify(err)}. Please check your keys in .env`);
             });
     };
 

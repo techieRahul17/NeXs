@@ -32,7 +32,7 @@ class Project(ProjectBase):
     owner_id: str
 
     class Config:
-        allow_population_by_field_name = True
+        populate_by_name = True
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
 
@@ -49,7 +49,7 @@ class User(UserBase):
     # projects: List[Project] = [] # Handling relations in NoSQL is different, simplifying for now
 
     class Config:
-        allow_population_by_field_name = True
+        populate_by_name = True
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
 

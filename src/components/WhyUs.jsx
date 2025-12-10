@@ -66,19 +66,19 @@ const WhyUs = () => {
             name: "Rahul V S",
             role: "Lead Developer & Architect",
             github: "https://github.com/techieRahul17",
-            defaultImage: "https://avatar.iran.liara.run/public/boy?username=Rahul"
+            defaultImage: "https://ui-avatars.com/api/?name=Rahul+V+S&background=random"
         },
         {
             name: "Adhithya R",
             role: "Full Stack Engineer",
             github: "https://github.com/Adhi-1004",
-            defaultImage: "https://avatar.iran.liara.run/public/boy?username=Adhithya"
+            defaultImage: "https://ui-avatars.com/api/?name=Adhithya+R&background=random"
         },
         {
             name: "Sharvesh Ram K S",
             role: "UI/UX & Frontend Wizard",
             github: "https://github.com/Sharu1425",
-            defaultImage: "https://avatar.iran.liara.run/public/boy?username=Sharvesh"
+            defaultImage: "https://ui-avatars.com/api/?name=Sharvesh+Ram+K+S&background=random"
         }
     ];
 

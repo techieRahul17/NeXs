@@ -52,12 +52,20 @@ const Navbar = () => {
                         Dashboard
                     </Link>
                 ) : (
-                    <Link
-                        to="/login"
-                        className="bg-primary text-black px-6 py-2 rounded-full font-bold uppercase tracking-wider hover:bg-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,46,46,0.6)] text-sm"
-                    >
-                        Client Login
-                    </Link>
+                    <div className="flex items-center gap-4">
+                        <Link
+                            to="/login"
+                            className="text-sm font-medium text-white hover:text-primary transition-colors uppercase tracking-widest hidden md:block"
+                        >
+                            Log In
+                        </Link>
+                        <Link
+                            to="/signup"
+                            className="bg-primary text-black px-6 py-2 rounded-full font-bold uppercase tracking-wider hover:bg-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(255,46,46,0.6)] text-sm"
+                        >
+                            Sign Up
+                        </Link>
+                    </div>
                 )}
             </div>
         </nav>
